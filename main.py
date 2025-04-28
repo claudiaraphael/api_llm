@@ -21,6 +21,8 @@ def generate(prompt: str, x_api_key: str = Depends(verify_api_key)):
     response = ollama.chat(model="mistral", messages=[{"role": "user", "content": prompt}])
     return {"response": response["message"]["content"]}
 
-
+API_KEY_CREDITS = {
+    api_key: 10,  # Example initial credits
+}
 
 

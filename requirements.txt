@@ -3,3 +3,5 @@ uvicorn
 ollama
 python-dotenv
 requests
+pydantic
+pylance
