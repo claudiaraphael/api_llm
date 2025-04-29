@@ -6,6 +6,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = FastAPI()
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the API. Use /generate endpoint with POST request."}
+
 API_KEY_CREDITS = {os.getenv("API_KEY"): 5} # Example API key with 5 credits
 
 # Middleware to check for API key
