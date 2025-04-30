@@ -3,12 +3,14 @@ import os
 import ollama
 from dotenv import load_dotenv
 
+# Load environment variables from .env file
 load_dotenv()
 
+# App initialization
 app = FastAPI()
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to the API. Use /generate endpoint with POST request."}
+    return {"Hello": "World"}
 
 API_KEY_CREDITS = {os.getenv("API_KEY"): 5} # Example API key with 5 credits
 
@@ -25,10 +27,6 @@ def generate(prompt: str, x_api_key: str = Depends(verify_api_key)):
     API_KEY_CREDITS[x_api_key] -= 1
     response = ollama.chat(model='mistral', messages=[{"role": "user", "content": prompt}])
     return {"response": response["message"]["content"]}
-
-
-
-
 
 
 # To run the server, use the command:
